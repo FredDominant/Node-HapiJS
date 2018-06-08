@@ -1,0 +1,23 @@
+{
+  "name": "node-hapijs",
+  "version": "1.0.0",
+  "description": "an introduction to hapiJS",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Noblemajesty/Node-HapiJS.git"
+  },
+  "author": "Fred Adewole",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Noblemajesty/Node-HapiJS/issues"
+  },
+  "homepage": "https://github.com/Noblemajesty/Node-HapiJS#readme",
+  "dependencies": {
+    "hapi": "^17.5.1"
+  }
+}
