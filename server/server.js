@@ -1,4 +1,6 @@
 const Hapi = require('hapi');
+const path = require('path');
+
 const userRoutes = require('./routes/users.routes');
 const generalRoutes = require('./routes/general.routes');
 
@@ -19,6 +21,14 @@ const startServer = async () => {
 		path: '/home',
 		handler: (request, reply) => {
 			return reply.file('./public/index.html');
+		}
+	});
+
+	server.route({
+		method: 'GET',
+		path: '/public/{file}',
+		handler: (request, reply) => {
+			return reply.file(`./public/${request.params.file}`);
 		}
 	});
 
