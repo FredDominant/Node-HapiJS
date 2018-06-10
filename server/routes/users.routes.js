@@ -16,7 +16,8 @@ const userRoutes = (server) => {
 		method: 'POST',
 		path: '/users/signup',
 		handler: (request, reply) => {
-			const response = reply.response('sign up successful')
+			console.log(request.payload);
+			const response = reply.response(request.payload)
 			response
 				.message("success")
 				.code(201)

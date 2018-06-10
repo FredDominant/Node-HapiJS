@@ -5,7 +5,7 @@
   "main": "server/server.js",
   "scripts": {
     "test": "mocha",
-    "start": "nodemon --watch server/server.js --watch public/index.html"
+    "start": "nodemon --watch server/server.js --watch public/** "
   },
   "repository": {
     "type": "git",
