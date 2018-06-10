@@ -1,14 +1,35 @@
+const mongoose = require('mongoose');
+const User = require('../models/user.model');
+
 const userRoutes = (server) => {
 
 	server.route({
 		method: 'GET',
 		path: '/users/{id}',
 		handler: (request, reply) => {
-			const response = reply.response(`Hello ${request.params.id}`);
-			response
-				.message('success')
-				.code(200);
-				return response;
+			return 'Hello World'
+		}
+	});
+
+	server.route({
+		method: 'GET',
+		path: '/users',
+		handler: (request, reply) => {
+			return User.find().exec()
+				.then(user => {
+					const response = reply.response(user)
+					response
+						.message('success')
+						.code(200)
+					return response
+				})
+				.catch((error) => {
+					const response = reply.response(error)
+					response
+						.message('error')
+						.code(500)
+					return response
+				});
 		}
 	});
 
@@ -16,12 +37,32 @@ const userRoutes = (server) => {
 		method: 'POST',
 		path: '/users/signup',
 		handler: (request, reply) => {
-			console.log(request.payload);
-			const response = reply.response(request.payload)
-			response
-				.message("success")
-				.code(201)
-			return response;
+
+			const { email, password } = request.payload;
+
+			const newUser = new User({
+				_id: new mongoose.Types.ObjectId(),
+				firstName: 'Steph',
+				lastName: 'Curry',
+				email,
+				password
+			})
+
+			return newUser.save()
+				.then(success => {
+					const response = reply.response(success);
+					response
+						.message('success')
+						.code(201);
+						return response;
+				})
+				.catch(error => {
+					const response = reply.response(error)
+					response
+						.message('error')
+						.code(500)
+						return response;
+				});
 		}
 	});
 	

@@ -12,11 +12,10 @@ const server = new Hapi.Server({
 	host: 'localhost'
 });
 
-const databaseUri = process.env.MONGODB_URL;
 /**
  * database connection
-*/
-
+ */
+const databaseUri = process.env.MONGODB_URL;
 mongoose.connect(databaseUri)
 	.then(() => console.log('database connected!'))
 	.catch((error) => { console.error.bind(console, 'connection error: ') })

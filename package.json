@@ -21,7 +21,8 @@
     "axios": "^0.18.0",
     "bootstrap": "^4.1.1",
     "hapi": "^17.5.1",
-    "inert": "^5.1.0"
+    "inert": "^5.1.0",
+    "mongodb": "^3.0.10"
   },
   "devDependencies": {
     "hapi-pino": "^4.0.4",
